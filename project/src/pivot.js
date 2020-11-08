@@ -1012,7 +1012,8 @@
         if (parseInt(j) === 0 && opts.table.rowTotals) {
           th = document.createElement("th");
           th.className = "pvtTotalLabel pvtRowTotalLabel";
-          th.innerHTML = opts.localeStrings.totals;
+          //th.innerHTML = opts.localeStrings.totals;
+          th.innerHTML = "<code>" + pivotData.aggregatorName + "</code><br/>" + pivotData.valAttrs;
           th.setAttribute("rowspan", colAttrs.length + (rowAttrs.length === 0 ? 0 : 1));
           tr.appendChild(th);
         }
@@ -1031,7 +1032,8 @@
         th = document.createElement("th");
         if (colAttrs.length === 0) {
           th.className = "pvtTotalLabel pvtRowTotalLabel";
-          th.innerHTML = opts.localeStrings.totals;
+          //th.innerHTML = opts.localeStrings.totals;
+          th.innerHTML = "<code>" + pivotData.aggregatorName + "</code><br/>" + pivotData.valAttrs;
         }
         tr.appendChild(th);
         thead.appendChild(tr);
@@ -1091,7 +1093,8 @@
         if (opts.table.colTotals || rowAttrs.length === 0) {
           th = document.createElement("th");
           th.className = "pvtTotalLabel pvtColTotalLabel";
-          th.innerHTML = opts.localeStrings.totals;
+          //th.innerHTML = opts.localeStrings.totals;
+          th.innerHTML = "<code>" + pivotData.aggregatorName + "</code><br/>" + pivotData.valAttrs;
           th.setAttribute("colspan", rowAttrs.length + (colAttrs.length === 0 ? 0 : 1));
           tr.appendChild(th);
         }
