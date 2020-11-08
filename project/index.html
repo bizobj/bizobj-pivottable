@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>透视表测试 ...</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    
+    <script type="text/javascript" src="./app/opener.js" charset="utf-8"></script>
+    
+    <style>
+      body {
+        font-family: Verdana;
+        font-size: 16px;
+        line-height: 32px;
+        margin: 32px;
+      }
+    </style>
+    
+    <script>
+	window._doTest01 = function(){
+		PivotTable.open("./app", { 
+			fileUrl: "../test-data/mps.csv",	/*注意: 这里需要与 app.html 对应的相对路径*/
+			tableKey: "Test01",
+			tableCaption: "Canadian Parliament 2012 Dataset"
+		});
+	};
+	window._doTest02 = function(){
+		PivotTable.open("./app", { 
+			fileUrl: "../test-data/mps.csv",	/*注意: 这里需要与 app.html 对应的相对路径*/
+			tableKey: "Test02",
+			tableCaption: "Canadian Parliament 2012 Dataset",
+			attributes: {
+				renderer: "Heatmap",
+				fields: {cols: ["Gender"], rows: ["Province", "Party"]},
+				aggregator: {name: "平均值", vals: ["Age"]}
+			}
+		});
+	};
+	window._doTest03 = function(){
+		PivotTable.open("./app", { 
+			fileUrl: "../test-data/montreal_2014.csv",	/*注意: 这里需要与 app.html 对应的相对路径*/
+			tableKey: "Test03",
+			tableCaption: "Montreal Weather 2014 Dataset",
+			attributes: {
+				dateFields: ["Date"],
+				renderer: "Heatmap",
+				fields: {cols: ["Date@季度"], rows: ["Date@年"]},
+				aggregator: {name: "平均值", vals: ["Max Temp (C)"]}
+			}
+		});
+	};
+
+	window._doTest99 = function(){
+		PivotTable.open("./app", { 
+			fileUrl: "../test-data/git-stat.csv",	/*注意: 这里需要与 app.html 对应的相对路径*/
+			tableKey: "Test99",
+			tableCaption: "Git 统计数据(30万行)",
+			attributes: {
+				dateFields: ["提交时间"],
+				renderer: "Heatmap",
+				fields: {cols: ["提交时间@星期"], rows: ["提交时间@年", "产品", "Repo"]},
+				aggregator: {name: "求和", vals: ["工作量"]}
+			}			
+		});
+	};
+	</script>
+  </head>
+  <body>
+    <a href="javascript:_doTest01()">测试 01: Canadian Parliament 2012 Dataset</a><br/>
+    <a href="javascript:_doTest02()">测试 02: Canadian Parliament 2012 Dataset, 定制属性</a><br/>
+    <a href="javascript:_doTest03()">测试 03: Montreal Weather 2014 Dataset, 日期字段</a><br/>
+    <hr/>
+    <a href="javascript:_doTest99()">测试 99: Git 统计数据(30万行)</a><br/>
+  </body>
+</html>
