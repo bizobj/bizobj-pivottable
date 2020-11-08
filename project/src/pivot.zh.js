@@ -109,5 +109,3 @@
   });
 
 }).call(this);
-
-//# sourceMappingURL=pivot.zh.js.map

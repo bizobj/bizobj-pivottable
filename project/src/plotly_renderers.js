@@ -226,5 +226,3 @@
   });
 
 }).call(this);
-
-//# sourceMappingURL=plotly_renderers.js.map
